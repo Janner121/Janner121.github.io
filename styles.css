@@ -1,1 +1,950 @@
+/* Variables y configuración general */
+:root {
+    --primary: #ff0095;
+    --secondary: #1e88e5;
+    --accent: #43a047;
+    --dark: #111111;
+    --darker: #0a0a0a;
+    --medium-dark: #222222;
+    --card-bg: #333333;
+    --item-bg: #2a2a2a;
+    --light: #1a1a1a;
+    --text-primary: #f0f0f0;
+    --text-secondary: #cccccc;
+    --text-tertiary: #b0b0b0;
+    --success: #28a745;
+    --danger: #dc3545;
+    --white: #ffffff;
+    --whatsapp: #25D366;
+    --email: #0078D4;
+    --location: #FF4136;
+    --id-card: #6A0DAD;
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    --shadow-hover: 0 15px 30px rgba(0, 0, 0, 0.3);
+    --radius: 8px;
+    --transition: all 0.3s ease-in-out;
+}
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.7;
+    color: var(--text-primary);
+    background-color: var(--light);
+    overflow-x: hidden;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+a {
+    text-decoration: none;
+    color: var(--secondary);
+    transition: var(--transition);
+}
+
+ul {
+    list-style: none;
+}
+
+
+/* Botones y elementos comunes */
+.btn {
+    display: inline-block;
+    padding: 12px 28px;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: var(--transition);
+    text-align: center;
+    border: none;
+    outline: none;
+    box-shadow: var(--shadow);
+}
+
+.btn-primary {
+    background-color: var(--primary);
+    color: var(--white);
+}
+
+.btn-primary:hover {
+    background-color: #ff33aa;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(255, 0, 149, 0.3);
+}
+
+.btn-secondary {
+    background-color: var(--dark);
+    color: var(--white);
+}
+
+.btn-secondary:hover {
+    background-color: var(--secondary);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(25, 118, 210, 0.3);
+}
+
+.btn-whatsapp {
+    background-color: var(--whatsapp);
+}
+
+.btn-whatsapp:hover {
+    background-color: #20bd5c;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3);
+}
+
+.btn i {
+    margin-right: 8px;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+    text-align: center;
+    position: relative;
+    font-weight: 700;
+}
+
+.section-title::after {
+    content: "";
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(to right, var(--primary), var(--secondary));
+    border-radius: 2px;
+}
+
+.section-description {
+    text-align: center;
+    max-width: 800px;
+    margin: 2rem auto;
+    color: var(--text-tertiary);
+    font-size: 1.1rem;
+}
+
+.section-divider {
+    height: 5px;
+    max-width: 80%;
+    margin: 4rem auto;
+    background: linear-gradient(to right, var(--primary), var(--secondary), var(--accent));
+    border-radius: 5px;
+}
+
+/* Animaciones y efectos */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.9s cubic-bezier(0.5, 0, 0, 1);
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.animate-delay-1 {
+    transition-delay: 0.2s;
+}
+
+.animate-delay-2 {
+    transition-delay: 0.4s;
+}
+
+.animate-delay-3 {
+    transition-delay: 0.6s;
+}
+
+/* Cabecera y Navegación */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 1.2rem 0;
+    transition: var(--transition);
+    background: transparent;
+}
+
+header.scrolled {
+    background-color: rgba(40, 40, 40, 0.95);
+    box-shadow: var(--shadow);
+    backdrop-filter: blur(10px);
+    padding: 0.8rem 0;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo h1 {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--white);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+    transition: var(--transition);
+}
+
+header.scrolled .logo h1 {
+    color: var(--text-primary);
+    text-shadow: none;
+}
+
+nav ul {
+    display: flex;
+    align-items: center;
+}
+
+nav ul li {
+    margin-left: 2.5rem;
+}
+
+nav ul li a {
+    color: var(--white);
+    font-weight: 500;
+    position: relative;
+    padding: 0.5rem 0;
+    font-size: 1.05rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+header.scrolled nav ul li a {
+    color: var(--text-primary);
+    text-shadow: none;
+}
+
+nav ul li a::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary);
+    transition: var(--transition);
+}
+
+nav ul li a:hover::after,
+nav ul li.active a::after {
+    width: 100%;
+}
+
+.nav-toggle {
+    display: none;
+    background: transparent;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--white);
+    cursor: pointer;
+}
+
+header.scrolled .nav-toggle {
+    color: var(--text-primary);
+}
+
+/* Héroe / Inicio */
+.hero {
+    height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    overflow: hidden;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8)), 
+                url('https://www.peru.travel/Contenido/General/Imagen/es/1110/1.1/amazonia-desktop.jpg') no-repeat center center;
+    background-size: cover;
+    z-index: -1;
+    transform: scale(1.05);
+    animation: heroZoom 15s ease infinite alternate;
+}
+
+@keyframes heroZoom {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.05);
+    }
+}
+
+.hero-content {
+    text-align: center;
+    max-width: 800px;
+    padding: 0 20px;
+    position: relative;
+    z-index: 2;
+}
+
+.hero h2 {
+    font-size: 3.8rem;
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+    animation: fadeInUp 1.2s ease forwards;
+}
+
+.hero p {
+    font-size: 1.3rem;
+    margin-bottom: 2.5rem;
+    text-shadow: 0 1px 5px rgba(0, 0, 0, 0.7);
+    animation: fadeInUp 1.2s 0.3s ease forwards;
+    opacity: 0;
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1.2rem;
+    animation: fadeInUp 1.2s 0.6s ease forwards;
+    opacity: 0;
+}
+
+.scroll-down {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--white);
+    font-size: 1.8rem;
+    animation: bounce 2s infinite;
+    z-index: 2;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0) translateX(-50%);
+    }
+    40% {
+        transform: translateY(-20px) translateX(-50%);
+    }
+    60% {
+        transform: translateY(-10px) translateX(-50%);
+    }
+}
+
+/* Tours */
+.tour {
+    padding: 6rem 0;
+    position: relative;
+    background-color: var(--medium-dark);
+}
+
+.tour-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2.5rem;
+    margin-top: 3rem;
+}
+
+.tour-day {
+    background-color: var(--card-bg);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+}
+
+.tour-day:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-hover);
+}
+
+.tour-day h3 {
+    color: var(--text-primary);
+    padding: 1.2rem 1.5rem;
+    font-size: 1.3rem;
+    text-align: center;
+}
+
+.img-container {
+    height: 230px;
+    overflow: hidden;
+}
+
+.img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.tour-day:hover .img-container img {
+    transform: scale(1.08);
+}
+
+.tour-timeline {
+    padding: 1.5rem;
+}
+
+.timeline-item {
+    margin-bottom: 1.2rem;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.timeline-item::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 10px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: var(--primary);
+}
+
+.timeline-item:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    left: 4px;
+    top: 20px;
+    width: 2px;
+    height: calc(100% + 5px);
+    background-color: rgba(255, 0, 149, 0.3);
+}
+
+.time {
+    font-weight: 700;
+    color: var(--secondary);
+    margin-bottom: 0.3rem;
+    display: inline-block;
+}
+
+.timeline-item p {
+    margin-bottom: 0.5rem;
+    color: var(--text-secondary);
+}
+
+.timeline-item ul {
+    margin-left: 1rem;
+}
+
+.timeline-item ul li {
+    position: relative;
+    padding-left: 1rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-secondary);
+}
+
+.timeline-item ul li::before {
+    content: "•";
+    color: var(--secondary);
+    position: absolute;
+    left: -0.2rem;
+    top: 0rem;
+}
+
+.tour-includes {
+    background: linear-gradient(135deg, rgba(255, 0, 149, 0.1), rgba(25, 118, 210, 0.1));
+    border-radius: var(--radius);
+    padding: 2rem;
+    border-left: 4px solid var(--primary);
+}
+
+.tour-includes h3 {
+    color: var(--text-primary);
+    margin-bottom: 1.2rem;
+    background: none;
+    text-align: left;
+    padding: 0;
+}
+
+.tour-includes ul li {
+    margin-bottom: 0.8rem;
+    position: relative;
+    padding-left: 1.8rem;
+    color: var(--text-secondary);
+}
+
+.tour-includes ul li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: 700;
+}
+
+.tour-map {
+    margin-top: 4rem;
+}
+
+.tour-map h3 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    color: var(--text-primary);
+}
+
+.tour-map iframe {
+    width: 100%;
+    height: 450px;
+    border: none;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+
+/* Quiénes Somos */
+.about {
+    padding: 6rem 0;
+    position: relative;
+    background-color: var(--light);
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.about-item {
+    padding: 2rem;
+    border-radius: var(--radius);
+    transition: var(--transition);
+    background-color: var(--item-bg);
+    position: relative;
+    overflow: hidden;
+}
+
+.about-item::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 5px;
+    height: 100%;
+    background: linear-gradient(to bottom, var(--primary), var(--secondary));
+}
+
+.about-item:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow);
+}
+
+.about-item h3 {
+    color: var(--primary);
+    margin-bottom: 1.2rem;
+    font-size: 1.4rem;
+}
+
+.about-item p {
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+}
+
+.about-item ul {
+    margin-top: 1.2rem;
+}
+
+.about-item ul li {
+    margin-bottom: 0.8rem;
+    position: relative;
+    padding-left: 1.5rem;
+    color: var(--text-secondary);
+}
+
+.about-item ul li::before {
+    content: "▹";
+    position: absolute;
+    left: 0;
+    color: var(--primary);
+}
+
+/* Contacto */
+.contact {
+    padding: 6rem 0;
+    position: relative;
+    background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1));
+}
+
+.contact-grid {
+    margin-top: 3rem;
+}
+
+.contact-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2rem;
+}
+
+.contact-item {
+    background-color: var(--card-bg);
+    border-radius: var(--radius);
+    padding: 2rem;
+    text-align: center;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.contact-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
+}
+
+
+/* Estilos base para todos los iconos */
+.contact-item i {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    padding: 20px;
+    border-radius: 50%;
+    transition: var(--transition);
+}
+
+.fa-whatsapp{
+    cursor: pointer;
+}
+
+.fa-whatsapp:hover{
+    background-color: #20bd5c5e;
+}
+
+.fa-envelope{
+    cursor: pointer;
+}
+
+/* Estilos específicos para cada icono con su color correspondiente */
+
+/* WhatsApp - verde */
+.contact-item .fa-whatsapp {
+    color: var(--whatsapp);
+    background-color: rgba(37, 211, 102, 0.1);
+}
+
+.contact-item:hover .fa-whatsapp {
+    background-color: var(--whatsapp);
+    color: var(--white);
+    transform: scale(1.1);
+}
+
+/* Correo - azul */
+.contact-item .fa-envelope {
+    color: var(--email);
+    background-color: rgba(0, 120, 212, 0.1);
+}
+
+.contact-item:hover .fa-envelope {
+    background-color: var(--email);
+    color: var(--white);
+    transform: scale(1.1);
+}
+
+/* Ubicación - rojo */
+.contact-item .fa-map-marker-alt {
+    color: var(--location);
+    background-color: rgba(255, 65, 54, 0.1);
+}
+
+.contact-item:hover .fa-map-marker-alt {
+    background-color: var(--location);
+    color: var(--white);
+    transform: scale(1.1);
+}
+
+/* RUC/ID - morado */
+.contact-item .fa-id-card {
+    color: var(--id-card);
+    background-color: rgba(106, 13, 173, 0.1);
+}
+
+.contact-item:hover .fa-id-card {
+    background-color: var(--id-card);
+    color: var(--white);
+    transform: scale(1.1);
+}
+
+.contact-item h3 {
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+    font-size: 1.3rem;
+}
+
+.contact-item p {
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+}
+
+.contact-item a {
+    font-weight: 500;
+    color: #e6e6e6;
+}
+
+/* Footer */
+footer {
+    background-color: var(--dark);
+    color: rgba(255, 255, 255, 0.8);
+    padding: 5rem 0 2rem;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 3rem;
+    margin-bottom: 3rem;
+}
+
+.footer-logo h2 {
+    color: var(--white);
+    margin-bottom: 1.2rem;
+    font-size: 1.7rem;
+}
+
+.footer-logo p {
+    opacity: 0.7;
+    margin-bottom: 1.5rem;
+}
+
+.footer-social h3,
+.footer-links h3 {
+    color: var(--white);
+    margin-bottom: 1.5rem;
+    position: relative;
+    padding-bottom: 0.8rem;
+    font-size: 1.3rem;
+}
+
+.footer-social h3::after,
+.footer-links h3::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background: linear-gradient(to right, var(--primary), var(--secondary));
+}
+
+.social-icons {
+    display: flex;
+    gap: 1rem;
+}
+
+.social-icons a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    color: var(--white);
+    transition: var(--transition);
+}
+
+.social-icons a:hover {
+    background-color: var(--primary);
+    transform: translateY(-5px);
+}
+
+/* Colores específicos para iconos de redes sociales */
+.social-icons a .fa-facebook {
+    color: #1877F2;
+}
+
+.social-icons a .fa-instagram {
+    color: #E4405F;
+}
+
+.social-icons a .fa-twitter {
+    color: #1DA1F2;
+}
+
+.social-icons a .fa-youtube {
+    color: #FF0000;
+}
+
+/* Efecto hover para los iconos */
+.social-icons a:hover {
+    background-color: transparent;
+    transform: translateY(-5px);
+}
+
+.social-icons a:hover .fa-facebook {
+    color: #1877F2;
+}
+
+.social-icons a:hover .fa-instagram {
+    color: #E4405F;
+}
+
+.social-icons a:hover .fa-twitter {
+    color: #1DA1F2;
+}
+
+.social-icons a:hover .fa-youtube {
+    color: #FF0000;
+}
+
+.footer-links ul li {
+    margin-bottom: 0.8rem;
+}
+
+.footer-links ul li a {
+    color: rgba(255, 255, 255, 0.7);
+    transition: var(--transition);
+}
+
+.footer-links ul li a:hover {
+    color: var(--primary);
+    padding-left: 5px;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+
+
+/* Media Queries */
+@media (max-width: 992px) {
+    .section-title {
+        font-size: 2.2rem;
+    }
+    
+    .hero h2 {
+        font-size: 3rem;
+    }
+    
+    .hero p {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-toggle {
+        display: block;
+    }
+    
+    nav {
+        position: fixed;
+        top: 0;
+        right: -300px;
+        width: 300px;
+        height: 100vh;
+        background-color: var(--card-bg);
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
+        transition: var(--transition);
+        z-index: 1001;
+        padding-top: 80px;
+    }
+    
+    nav.open {
+        right: 0;
+    }
+    
+    nav ul {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    nav ul li {
+        margin: 0;
+        width: 100%;
+    }
+    
+    nav ul li a {
+        display: block;
+        padding: 15px 30px;
+        color: var(--text-primary) !important;
+        text-shadow: none !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .hero h2 {
+        font-size: 2.5rem;
+    }
+    
+    .cta-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .cta-buttons .btn {
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+    
+    .tour-grid,
+    .about-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 576px) {
+    .section-title {
+        font-size: 1.8rem;
+    }
+    
+    .hero h2 {
+        font-size: 2rem;
+    }
+    
+    .logo h1 {
+        font-size: 1.4rem;
+    }
+    
+    .contact-info {
+        grid-template-columns: 1fr;
+    }
+    
+    .tour-map iframe {
+        height: 300px;
+    }
+}
